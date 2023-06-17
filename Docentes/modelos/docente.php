@@ -26,7 +26,7 @@ class Docente extends Conexion{
 	//funcion para listar todos los usuarios
 	public function getDoc(){
 		$row = null;
-		$statement = $this->db->prepare("SELECT * FROM usuarios WHERE Documentodoc = :DocumentoDoc");
+		$statement = $this->db->prepare("SELECT * FROM docentes WHERE Documentodoc = :DocumentoDoc");
 		$tatement->execute();
 		while ($resul = $statement->fetch()) {
 			$row[] = $resul;
@@ -46,8 +46,8 @@ class Docente extends Conexion{
 		return $row;
 	}
 
-	//funcion para actualizar los datos del usuario
-	public function updatead($NombreDoc,$ApellidoDoc,$DocumentoDoc,$CorreoDoc,$MateriaDoc,$NotasMateDoc){
+	//funcion para actualizar los datos del docente
+	public function updateDoc($NombreDoc,$ApellidoDoc,$DocumentoDoc,$CorreoDoc,$MateriaDoc,$NotasMateDoc){
 
 		$statement = $this->db->prepare("UPDATE * FROM docentes SET Nombredoc=:NombreDoc, Apellidodoc=:ApellidoDoc, Documentodoc=:DocumentoDoc, Correodoc=:CorreoDoc, Materiadoc=:MateriaDoc, Notasmate=:NotasMateDoc WHERE id_docente = $Id");
 
@@ -65,16 +65,16 @@ class Docente extends Conexion{
 		}
 	}
 
-	//funcion para eliminar un usuario
-	public function deletead($Id){
+	//funcion para eliminar un docente
+	public function deleteDoc($Id){
 
 		$statement = $this->db->prepare("DELETE * FROM docentes WHERE id_usuario = $Id");
 		$statement->bindParam(':Id',$Id);
 		if ($statement->execute()) {
-			echo "Usuario eliminado";
+			echo "Docente eliminado";
 			header('Location: ../pages/index.php')
 		}else{
-			echo "El usuario no se pudo eliminar";
+			echo "El docente no se pudo eliminar";
 			header('Location: ../pages/eliminar.php');
 		}
 	}
