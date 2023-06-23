@@ -1,19 +1,22 @@
 <?php
 include_once('../../Conexion.php');
 class Docente extends Conexion{
-	public funcion __construct(){
+	public function __construct(){
 		$this->db = parent::__construct();
 	}
 
-	public function agregarDoc($NombreDoc,$ApellidoDoc,$DocumentoDoc,$CorreoDoc,$MateriaDoc,$NotasMateDoc){
+	public function agregarDoc($NombreDoc,$ApellidoDoc,$DocumentoDoc,$CorreoDoc,$MateriaDoc,$Usuariodoc,$Passworddoc,$Perfil,$Estadodoc){
 
-		$statement = $this->db->prepare("INSERT INTO docentes(Nombredoc,Apellidodoc,Documentodoc,Correodoc,Materiadoc,Notasmate)values(:NombreDoc,:ApellidoDoc,:DocumentoDoc,:CorreoDoc,:MateriaDoc,:NotasMateDoc)");
+		$statement = $this->db->prepare("INSERT INTO docentes(Nombredoc,Apellidodoc,Documentodoc,Correodoc,Materiadoc,Usuariodoc,Passworddoc,Perfil,Estadodoc)values(:NombreDoc,:ApellidoDoc,:DocumentoDoc,:CorreoDoc,:MateriaDoc,:Usuariodoc,:Passworddoc,:Perfil,:Estadodoc)");
 		$statement->bindParam(':NombreDoc',$NombreDoc);
 		$statement->bindParam(':ApellidoDoc',$ApellidoDoc);
 		$statement->bindParam(':DocumentoDoc',$DocumentoDoc);
 		$statement->bindParam(':CorreoDoc',$CorreoDoc);
 		$statement->bindParam('MateriaDoc',$MateriaDoc);
-		$statement->bindParam(':NotasMateDoc',$NotasMateDoc);
+		$statement->bindParam(':Usuariodoc',$Usuariodoc);
+		$statement->bindParam(':Passworddoc',$Passworddoc);
+		$statement->bindParam(':Perfil',$Perfil);
+		$statement->bindParam(':Estadodoc',$Estadodoc);
 		if ($statement->execute()) {
 			echo "Docente registrado";
 			header('Location: ../pages/index.php');
@@ -72,7 +75,7 @@ class Docente extends Conexion{
 		$statement->bindParam(':Id',$Id);
 		if ($statement->execute()) {
 			echo "Docente eliminado";
-			header('Location: ../pages/index.php')
+			header('Location: ../pages/index.php');
 		}else{
 			echo "El docente no se pudo eliminar";
 			header('Location: ../pages/eliminar.php');
