@@ -7,7 +7,7 @@ class Materias extends Conexion
 	}
 
 	public function agregarM($Nombremate){
-		$statement=$this->db->prepare("INSERT INTO materias(Nombremmate)values(:Nombremate)");
+		$statement=$this->db->prepare("INSERT INTO materias(Nombremate)values(:Nombremate)");
 
 		$statement->bindParam(':Nombremate',$Nombremate);
 		if ($statement->execute()) {
