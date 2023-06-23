@@ -2,7 +2,7 @@
 include_once('../../Conexion.php');
 class Materias extends Conexion
 {
-	public funcion __construct(){
+	public function __construct(){
 		$this->db = parent::__construct();
 	}
 
@@ -63,7 +63,7 @@ class Materias extends Conexion
 		$statement->bindParam(':Id',$Id);
 		if ($statement->execute()) {
 			echo "Materia eliminada";
-			header('Location: ../pages/index.php')
+			header('Location: ../pages/index.php');
 		}else{
 			echo "La materia no se pudo eliminar";
 			header('Location: ../pages/eliminar.php');
