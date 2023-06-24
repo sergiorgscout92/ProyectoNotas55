@@ -28,7 +28,7 @@ class Administrador extends Conexion{
 	public function getad(){
 		$row = null;
 		$statement = $this->db->prepare("SELECT * FROM usuarios WHERE Perfil = 'Administrador'");
-		$tatement->execute();
+		$statement->execute();
 		while ($resul = $statement->fetch()) {
 			$row[] = $resul;
 		}
@@ -37,26 +37,29 @@ class Administrador extends Conexion{
 
 	//funcion para listar por id especifico
 	public function getidad($Id){
-		$row = null;
-		$statement = $this->db->prepare("SELECT * FROM usuarios WHERE Perfil='Administrador' AND id_usuario=:Id");
+		
+		$statement = $this->db->prepare("SELECT * FROM usuarios WHERE id_usuario = :Id");
 		$statement->bindParam(':Id',$Id);
 		$statement->execute();
-		while ($resul = $statement->fetch()) {
-			$row[] = $resul;
-		}
-		return $row;
+
+		//Obtener los resultados utilizando fetch();
+		$resultado = $statement->fetch(PDO::FETCH_ASSOC);
+
+		//Devolver los resultados
+		return $resultado;
 	}
 
 	//funcion para actualizar los datos del usuario
-	public function updatead($Id,$Nombread,$Apellidoad,$Usuarioad,$Passwordad,$Estadoad){
+	public function updatead($Id,$Nombread,$Apellidoad,$Usuarioad,$Passwordad,$Perfil,$Estadoad){
 
-		$statement = $this->db->prepare("UPDATE * FROM usuarios SET Nombreusu=:Nombread, Apellidousu=:Apellidoad, Usuario=:Usuarioad, Passwordusu=:Passwordad, Estado=:Estadoad WHERE id_usuario = $Id");
+		$statement = $this->db->prepare("UPDATE * FROM usuarios SET id_usuario=:Id, Nombreusu=:Nombread, Apellidousu=:Apellidoad, Usuario=:Usuarioad, Passwordusu=:Passwordad, Perfil=:Perfil, Estado=:Estadoad WHERE id_usuario = $Id");
 
 		$statement->bindParam(':Id',$Id);
 		$statement->bindParam(':Nombread',$Nombread);
 		$statement->bindParam(':Apellidoad',$Apellidoad);
 		$statement->bindParam(':Usuarioad',$Usuarioad);
 		$statement->bindParam(':Passwordad',$Passwordad);
+		$statement->bindParam(':Perfil',$Perfil);
 		$statement->bindParam(':Estadoad',$Estadoad);
 		if ($statement->execute()) {
 			header('Location: ../pages/index.php');
