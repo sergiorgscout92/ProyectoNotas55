@@ -30,7 +30,7 @@
 					//crear el objeto para acceder a las funciones de la clase administrador
 					$obj = new Administrador();
 					$datos = $obj->getad();
-
+					
 					
 					foreach($datos as $datos){
 						?>
