@@ -74,10 +74,9 @@ class Docente extends Conexion{
 
 	//funcion para eliminar un docente
 	public function deleteDoc($Id){
-
-		$statement = $this->db->prepare("DELETE * FROM docentes WHERE id_usuario = $Id");
+		$statement = $this->db->prepare("DELETE FROM docentes WHERE id_docente=:Id");
 		$statement->bindParam(':Id',$Id);
-		if ($statement->execute()) {
+		if($statement->execute()){
 			echo "Docente eliminado";
 			header('Location: ../pages/index.php');
 		}else{
