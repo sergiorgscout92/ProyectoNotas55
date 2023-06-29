@@ -1,6 +1,6 @@
 <?php
 include_once('../../Conexion.php');
-class Materias extends Conexion
+class Materia extends Conexion
 {
 	public function __construct(){
 		$this->db = parent::__construct();
@@ -22,8 +22,8 @@ class Materias extends Conexion
 	//funcion para listar todas las materias
 	public function getMate(){
 		$row = null;
-		$statement = $this->db->prepare("SELECT * FROM materias WHERE Nombremate = :Nombremate");
-		$tatement->execute();
+		$statement = $this->db->prepare("SELECT * FROM materias WHERE Nombremate = 'Nombremate'");
+		$statement->execute();
 		while ($resul = $statement->fetch()) {
 			$row[] = $resul;
 		}
@@ -32,20 +32,29 @@ class Materias extends Conexion
 
 	//funcion para listar por id especifico
 	public function getIdMate($Id){
-		$row = null;
+		/*$row = null;
 		$statement = $this->db->prepare("SELECT * FROM materias WHERE Nombremate=:Nombremate AND id_materia=:Id");
 		$statement->bindParam(':Id',$Id);
 		$statement->execute();
 		while ($resul = $statement->fetch()) {
 			$row[] = $resul;
 		}
-		return $row;
+		return $row;*/
+		$statement = $this->db->prepare("SELECT * FROM materias WHERE id_materia = :Id");
+		$statement->bindParam(':Id',$Id);
+		$statement->execute();
+
+		//Obtener los resultados utilizando fetch();
+		$resultado = $statement->fetch(PDO::FETCH_ASSOC);
+
+		//Devolver los resultados
+		return $resultado;
 	}
 
 	//funcion para actualizar los datos de las materias
 	public function updateMate($Nombremate){
 
-		$statement = $this->db->prepare("UPDATE * FROM materias SET Nombremate=:Nombremate WHERE id_materia = $Id");
+		$statement = $this->db->prepare("UPDATE materias SET Nombremate=:Nombremate WHERE id_materia = :Id");
 
 		$statement->bindParam(':Id',$Id);
 		$statement->bindParam(':Nombremate',$Nombremate);
@@ -59,7 +68,7 @@ class Materias extends Conexion
 	//funcion para eliminar una materia
 	public function deleteMate($Id){
 
-		$statement = $this->db->prepare("DELETE * FROM docentes WHERE id_materia = $Id");
+		$statement = $this->db->prepare("DELETE * FROM docentes WHERE id_materia = :Id");
 		$statement->bindParam(':Id',$Id);
 		if ($statement->execute()) {
 			echo "Materia eliminada";
