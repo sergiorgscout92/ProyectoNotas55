@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-06-2023 a las 02:43:13
+-- Tiempo de generación: 17-06-2023 a las 04:16:44
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.0.25
 
@@ -29,11 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `docentes` (
   `id_docente` int(11) NOT NULL,
-  `Nombredoc` varchar(60) NOT NULL,
-  `Apellidodoc` varchar(60) NOT NULL,
-  `Documentodoc` varchar(12) NOT NULL,
-  `Correodoc` varchar(60) NOT NULL,
-  `Materiadoc` varchar(40) NOT NULL,
+  `Nombredoce` varchar(60) NOT NULL,
+  `Apellidodoce` varchar(60) NOT NULL,
+  `Documentodoce` varchar(12) NOT NULL,
+  `Correodoce` varchar(60) NOT NULL,
+  `Materiadoce` varchar(40) NOT NULL,
   `Notasmate` decimal(10,1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -44,15 +44,15 @@ CREATE TABLE `docentes` (
 --
 
 CREATE TABLE `estudiantes` (
-  `id_Estudiante` int(11) NOT NULL,
-  `nombre` varchar(60) NOT NULL,
-  `apellido` varchar(60) NOT NULL,
-  `documento` varchar(12) NOT NULL,
-  `correo` varchar(60) NOT NULL,
-  `materia` varchar(30) NOT NULL,
-  `docente` varchar(60) NOT NULL,
-  `promedio` int(11) NOT NULL,
-  `fecha_registro` date DEFAULT NULL
+  `id_estudiante` int(11) NOT NULL,
+  `Nombreest` varchar(60) NOT NULL,
+  `Apellidoest` varchar(60) NOT NULL,
+  `Documentoest` varchar(12) NOT NULL,
+  `Correoest` varchar(60) NOT NULL,
+  `Materia` varchar(30) NOT NULL,
+  `Docente` varchar(60) NOT NULL,
+  `Promedio` int(11) NOT NULL,
+  `Fecha_registro` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -89,7 +89,7 @@ CREATE TABLE `notas_estudiante_materia` (
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
   `Nombreusu` varchar(60) NOT NULL,
-  `Apellidousu` varchar(60) NOT NULL,
+  `Aoellidousu` varchar(60) NOT NULL,
   `Usuario` varchar(40) NOT NULL,
   `Passwordusu` varchar(80) NOT NULL,
   `Perfil` varchar(30) NOT NULL,
@@ -110,7 +110,7 @@ ALTER TABLE `docentes`
 -- Indices de la tabla `estudiantes`
 --
 ALTER TABLE `estudiantes`
-  ADD PRIMARY KEY (`id_Estudiante`);
+  ADD PRIMARY KEY (`id_estudiante`);
 
 --
 -- Indices de la tabla `materias`
@@ -148,7 +148,7 @@ ALTER TABLE `docentes`
 -- AUTO_INCREMENT de la tabla `estudiantes`
 --
 ALTER TABLE `estudiantes`
-  MODIFY `id_Estudiante` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_estudiante` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `materias`
@@ -176,7 +176,7 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `notas_estudiante_materia`
 --
 ALTER TABLE `notas_estudiante_materia`
-  ADD CONSTRAINT `notas_estudiante_materia_ibfk_1` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiantes` (`id_Estudiante`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `notas_estudiante_materia_ibfk_1` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiantes` (`id_estudiante`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `notas_estudiante_materia_ibfk_2` FOREIGN KEY (`id_materia`) REFERENCES `materias` (`id_materia`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `notas_estudiante_materia_ibfk_3` FOREIGN KEY (`id_docente`) REFERENCES `docentes` (`id_docente`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
