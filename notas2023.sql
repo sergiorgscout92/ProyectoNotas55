@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-06-2023 a las 02:20:08
+-- Tiempo de generación: 02-07-2023 a las 08:32:52
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -34,8 +34,20 @@ CREATE TABLE `docentes` (
   `Documentodoc` varchar(12) NOT NULL,
   `Correodoc` varchar(60) NOT NULL,
   `Materiadoc` varchar(40) NOT NULL,
-  `Notasmate` decimal(10,1) NOT NULL
+  `Usuariodoc` varchar(60) NOT NULL,
+  `Passworddoc` varchar(60) NOT NULL,
+  `Perfil` varchar(30) NOT NULL,
+  `Estadodoc` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `docentes`
+--
+
+INSERT INTO `docentes` (`id_docente`, `Nombredoc`, `Apellidodoc`, `Documentodoc`, `Correodoc`, `Materiadoc`, `Usuariodoc`, `Passworddoc`, `Perfil`, `Estadodoc`) VALUES
+(8, 'Johanna', 'Cifuentes', '24567899', 'jcifuentes@gmail.com', 'Bases de datos', 'jcifuentes', '25f9e794323b453885f5181f1b624d0b', 'Docente', 'Activo'),
+(9, 'Jhon', 'Moreno', '10006', 'jhonmorenog@gmail.com', 'Programación', 'jmorenog', 'e10adc3949ba59abbe56e057f20f883e', 'Docente', 'Activo'),
+(10, 'Oswaldo', 'Pérez', '10008', 'operez@gmail.com', 'Redes', 'operez2', 'c33367701511b4f6020ec61ded352059', 'Docente', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -97,6 +109,14 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `Nombreusu`, `Apellidousu`, `Usuario`, `Passwordusu`, `Perfil`, `Estado`) VALUES
+(3, 'Edwin', 'Niño', 'enino', 'e10adc3949ba59abbe56e057f20f883e', 'Administrador', 'Activo'),
+(4, 'Juliana', 'Torres', 'jtorres', '4a6629303c679cfa6a5a81433743e52c', 'Administrador', 'Activo');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -104,7 +124,8 @@ CREATE TABLE `usuarios` (
 -- Indices de la tabla `docentes`
 --
 ALTER TABLE `docentes`
-  ADD PRIMARY KEY (`id_docente`);
+  ADD PRIMARY KEY (`id_docente`),
+  ADD UNIQUE KEY `Usuariodoc` (`Usuariodoc`);
 
 --
 -- Indices de la tabla `estudiantes`
@@ -141,7 +162,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `docentes`
 --
 ALTER TABLE `docentes`
-  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `estudiantes`
@@ -165,7 +186,7 @@ ALTER TABLE `notas_estudiante_materia`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
