@@ -30,7 +30,7 @@
 					require_once('../../Conexion.php');
 					require_once('../modelos/docente.php');
 
-					//crear el objeto para acceder a las funciones de la clase administrador
+					//crear el objeto para acceder a las funciones de la clase docente
 					$obj = new Docente();
 					$datos = $obj->getDoc();
 					

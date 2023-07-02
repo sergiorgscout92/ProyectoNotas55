@@ -7,7 +7,7 @@
 	<title>Inicio de sesión</title>
 </head>
 <body>
-	<div action="" method="POST">
+	<form action="" method="POST">
 		<div class="container">
 			<div class="col-lg-9">
 				<h1>Inicio de sesión</h1>
@@ -29,7 +29,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</form>
 	
 </body>
 </html>

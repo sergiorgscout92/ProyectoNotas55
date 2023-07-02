@@ -22,36 +22,36 @@
         <br>
       </div>
       <div class="form-group">
-        <label>Documento</label>
+        <label>Documento:</label>
         <input type="text" class="form-control" name="txtdocumentodoc" placeholder="Ingresar su documento">
         <br>
       </div>
       <div class="form-group">
-        <label>Correo</label>
+        <label>Correo:</label>
         <input type="email" class="form-control" name="txtcorreodoc" placeholder="Ingresar su correo">
         <br>
       </div>
       <div class="form-group">
-        <label>Materia</label>
-        <input type="text" name="txtmateriadoc" placeholder="Ingresar materia">
+        <label>Materia:</label>
+        <input type="text" class="form-control" name="txtmateriadoc" placeholder="Ingresar materia">
       </div>
       <div class="form-group">
-        <label>Usuario</label>
-        <input type="text" name="txtusuariodoc" placeholder="Ingresar usuario">
+        <label>Usuario:</label>
+        <input type="text" class="form-control" name="txtusuariodoc" placeholder="Ingresar usuario">
       </div>
       <div class="form-group">
-        <label>Contraseña</label>
-        <input type="password" name="txtcontrasenadoc" placeholder="Ingresar contraseña">
+        <label>Contraseña:</label>
+        <input type="password" class="form-control" name="txtcontrasenadoc" placeholder="Ingresar contraseña">
       </div>
       <div class="form-group">
-        <label>Perfil</label>
-        <select name="txtperfildoc" id="estadodoc">
+        <label>Perfil:</label>
+        <select name="txtperfildoc" id="perfildoc">
           <option value="Administrador">Administrador</option>
           <option value="Docente">Docente</option>
         </select>
       </div>
       <div class="form-group">
-        <label>Estado</label>
+        <label>Estado:</label>
         <select name="txtestadodoc" id="estadodoc">
           <option value="Activo">Activo</option>
           <option value="Inactivo">Inactivo</option>

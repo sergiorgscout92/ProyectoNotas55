@@ -13,7 +13,7 @@
 				<h1>Registro de materias</h1>
 				<div class="form-group">
 					<label>Nombre materia</label>
-					<input type="text" name="txtnombremate" placeholder="Ingresar nombre de la materia">
+					<input type="text" class="form-control" name="txtnombremate" placeholder="Ingresar nombre de la materia">
 				</div>
 				<div class="form-group">
 					<button class="btn btn-primary" type="submit" value="Registar">Registrar</button>

@@ -7,7 +7,7 @@ class Materia extends Conexion
 	}
 
 	public function agregarM($Nombremate){
-		$statement=$this->db->prepare("INSERT INTO materias(Nombremate)values(:Nombremate)");
+		/*	$statement=$this->db->prepare("INSERT INTO materias(Nombremate)values(:Nombremate)");
 
 		$statement->bindParam(':Nombremate',$Nombremate);
 		if ($statement->execute()) {
@@ -16,15 +16,34 @@ class Materia extends Conexion
 		}else{
 			echo "Error al registrar materia";
 			header('Location: ../pages/agregar.php');
+		}*/
+
+		$statement=$this->db->prepare("INSERT INTO materias(Nombremate)VALUES(:Nombremate)");
+		$statement->bindParam(':Nombremate',$Nombremate);
+
+		if($statement->execute()){
+			echo "Materia registrada";
+			header('Location: ../pages/index.php');
+		}else{
+			echo "Error al registrar la materia";
+			header('Location: ../pages/agregar.php');
 		}
 	}
 
 	//funcion para listar todas las materias
 	public function getMate(){
-		$row = null;
-		$statement = $this->db->prepare("SELECT * FROM materias WHERE Nombremate = 'Nombremate'");
+		/*$row = null;
+		$statement = $this->db->prepare("SELECT * FROM materias WHERE Nombremate = :Nombremate");
 		$statement->execute();
 		while ($resul = $statement->fetch()) {
+			$row[] = $resul;
+		}
+		return $row;*/
+
+		$row = null;
+		$statement = $this->db->prepare("SELECT * FROM materias WHERE Nombremate = :Nombremate");
+		$statement->execute();
+		while($resul = $statement->fetch()){
 			$row[] = $resul;
 		}
 		return $row;
@@ -68,7 +87,7 @@ class Materia extends Conexion
 	//funcion para eliminar una materia
 	public function deleteMate($Id){
 
-		$statement = $this->db->prepare("DELETE * FROM docentes WHERE id_materia = :Id");
+		$statement = $this->db->prepare("DELETE FROM docentes WHERE id_materia = :Id");
 		$statement->bindParam(':Id',$Id);
 		if ($statement->execute()) {
 			echo "Materia eliminada";
