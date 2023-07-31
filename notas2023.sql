@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-07-2023 a las 21:34:19
+-- Tiempo de generación: 01-08-2023 a las 01:35:37
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -40,6 +40,13 @@ CREATE TABLE `docentes` (
   `Estadodoc` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `docentes`
+--
+
+INSERT INTO `docentes` (`id_docente`, `Nombredoc`, `Apellidodoc`, `Documentodoc`, `Correodoc`, `Materiadoc`, `Usuariodoc`, `Passworddoc`, `Perfil`, `Estadodoc`) VALUES
+(18, 'Jhon', 'Moreno', '12345', 'jhonmorenog@gmail.com', 'Sistemas', 'jmorenog', '1234567890', 'Docente', 'Activo');
+
 -- --------------------------------------------------------
 
 --
@@ -61,7 +68,8 @@ CREATE TABLE `estudiantes` (
 --
 
 INSERT INTO `estudiantes` (`id_Estudiante`, `nombre`, `apellido`, `documento`, `correo`, `materia`, `docente`) VALUES
-(5, 'Angel', 'Gonzalez', '135689533', 'agonzalez@gmail.com', 'Redes', 'Oswaldo');
+(5, 'Angel', 'Gonzalez', '135689533', 'agonzalez@gmail.com', 'Redes', 'Oswaldo'),
+(6, 'Sergio', 'Romero', '1015482850', 'saromero058@soy.sena.edu.co', 'Programación', 'Jhon');
 
 -- --------------------------------------------------------
 
@@ -121,10 +129,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `Nombreusu`, `Apellidousu`, `Usuario`, `Passwordusu`, `Perfil`, `Estado`) VALUES
-(6, 'Sergio', 'Romero', 'sergiorgscoutco', '92e72406960dbc7c4e4574ea369d8d56', 'Administrador', 'Activo'),
-(7, 'Sergio', 'Romero', 'sergiorgscoutco', '92e72406960dbc7c4e4574ea369d8d56', 'Administrador', 'Activo'),
 (8, 'Tomas', 'Cachope', 'dia2023', '$2y$10$wrVyN9Yqt2kP4jhZrKxBg.3KdebhmIHWV0yS/waMocX8CcaQL4mvm', 'Administrador', 'Activo'),
-(9, 'aaaa', 'bbbb', 'dia2024', '$2y$10$WNGUIVXlQifk08.B0aGMkO3jseo2MyvfTDgaN9GxcMY0tU8JGoFzG', 'Docente', 'Activo');
+(9, 'aaaa', 'bbbb', 'dia2024', '$2y$10$WNGUIVXlQifk08.B0aGMkO3jseo2MyvfTDgaN9GxcMY0tU8JGoFzG', 'Docente', 'Activo'),
+(10, 'Edwin', 'Niño', 'enino', '$2y$10$avpXqL9i0ZADUUblVhRlFOJPYyQeaUYlLkpiFx81KmmukgVC/GU.S', 'Administrador', 'Activo'),
+(11, 'Johanna', 'Martinez', 'cifuentes0903', '$2y$10$od26/4TKxio5kq.jdOux9eAt902Jaf84yrXMxtR6hHS/e8y06gtPK', 'Docente', 'Activo');
 
 --
 -- Índices para tablas volcadas
@@ -172,13 +180,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `docentes`
 --
 ALTER TABLE `docentes`
-  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `estudiantes`
 --
 ALTER TABLE `estudiantes`
-  MODIFY `id_Estudiante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_Estudiante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `materias`
@@ -196,7 +204,7 @@ ALTER TABLE `notas_estudiante_materia`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas
