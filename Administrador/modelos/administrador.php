@@ -7,12 +7,13 @@ class Administrador extends Conexion{
 
 	public function agregarad($Nombread,$Apellidoad,$Usuarioad,$Passwordad,$Perfilad,$Estadoad){
 
-		$statement = $this->db->prepare("INSERT INTO usuarios(Nombreusu,Apellidousu,Usuario,Passwordusu,Perfil,Estado)values(:Nombread,:Apellidoad,:Usuarioad,:Passwordad,:Perfilad,:Estadoad)");
+		$hash1 = password_hash($Passwordad, PASSWORD_DEFAULT);
+		$statement = $this->db->prepare("INSERT INTO usuarios(Nombreusu,Apellidousu,Usuario,Passwordusu,Perfil,Estado)values(:Nombread,:Apellidoad,:Usuarioad,:hash1,:Perfilad,:Estadoad)");
 
 		$statement->bindParam(':Nombread',$Nombread);
 		$statement->bindParam(':Apellidoad',$Apellidoad);
 		$statement->bindParam(':Usuarioad',$Usuarioad);
-		$statement->bindParam(':Passwordad',$Passwordad);
+		$statement->bindParam(':hash1',$hash1);
 		$statement->bindParam(':Perfilad',$Perfilad);
 		$statement->bindParam(':Estadoad',$Estadoad);
 		if($statement->execute()){
@@ -51,7 +52,7 @@ class Administrador extends Conexion{
 
 	//funcion para actualizar los datos del usuario
 	public function updatead($Id,$Nombread,$Apellidoad,$Usuarioad,$Passwordad,$Perfil,$Estadoad){
-
+		
 		$statement = $this->db->prepare("UPDATE usuarios SET id_usuario=:Id, Nombreusu=:Nombread, Apellidousu=:Apellidoad, Usuario=:Usuarioad, Passwordusu=:Passwordad, Perfil=:Perfil, Estado=:Estadoad WHERE id_usuario = $Id");
 
 		$statement->bindParam(':Id',$Id);

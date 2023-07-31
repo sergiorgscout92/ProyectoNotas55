@@ -11,7 +11,7 @@ if($_POST){
 	$Correodoc = $_POST['txtcorreodoc'];
 	$Materiadoc = $_POST['txtmateriadoc'];
 	$Usuariodoc = $_POST['txtusuariodoc'];
-	$Passworddoc = MD5($_POST['txtcontrasenadoc']);
+	$Passworddoc = ($_POST['txtcontrasenadoc']);
 	$Perfildoc = $_POST['txtperfildoc'];
 	$Estadodoc = $_POST['txtestadodoc'];
 

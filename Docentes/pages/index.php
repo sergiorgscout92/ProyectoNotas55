@@ -1,3 +1,6 @@
+<?php
+require_once('../../Usuarios/controladores/validar.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +10,16 @@
 	<title></title>
 </head>
 <body>
-	<br>
+	<nav nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<ul class="navbar-nav">
+			<a class="btn btn-primary" href="pages/agregar.php">Usuarios</a>
+			<a class="btn btn-primary" href="../../Docentes/pages/agregar.php">Docentes</a>
+			<a class="btn btn-primary" href="../../Estudiantes/pages/agregar.php">Estudiantes</a>
+			<a class="btn btn-primary" href="../../Materias/pages/agregar.php">Materias</a>
+			<a class="btn btn-danger" href="../../Usuarios/controladores/salir.php">Cerrar Sesión</a>
+		</ul>
+	</nav>
+	<h2>BIENVENIDO: <?php echo $_SESSION['usuario'];?></h2>
 	<div class="container">
 		<h1 style="color:darkgray; text-align: center;">LISTADO DE DOCENTES</h1>
 		<div col=col-auto-mt-50>

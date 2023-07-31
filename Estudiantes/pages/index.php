@@ -1,3 +1,6 @@
+<?php
+require_once('../../Usuarios/controladores/validar.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +10,18 @@
 	<title>Estudiantes</title>
 </head>
 <body>
+	<nav nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+      <a class="btn btn-primary" href="../../Administrador/pages/agregar.php">Usuarios</a>
+      <a class="btn btn-primary" href="../../Docentes/pages/agregar.php">Docentes</a>
+      <a class="btn btn-primary" href="../../Estudiantes/pages/agregar.php">Estudiantes</a>
+      <a class="btn btn-primary" href="../../Materias/pages/agregar.php">Materias</a>
+      <a class="btn btn-danger" href="../../Usuarios/controladores/salir.php">Cerrar Sesión</a>
+    </ul>
+  </nav>
+	<h2>BIENVENIDO: <?php echo $_SESSION['usuario'];?></h2>
 	<div class="container">
-		<h1 style="color:darkgray; text-align: center;">LISTADO DE DOCENTES</h1>
+		<h1 style="color:darkgray; text-align: center;">LISTADO DE ESTUDIANTES</h1>
 		<div col=col-auto-mt-50>
 			<table class="table table-dark table-hover">
 				<tr>
@@ -19,8 +32,6 @@
 					<th>CORREO</th>
 					<th>MATERIA</th>
 					<th>DOCENTE</th>
-					<th>PROMEDIO</th>
-					<th>FECHA DE REGISTRO</th>
 					<th>ACTUALIZAR</th>
 					<th>ELIMINAR</th>
 				</tr>
@@ -37,17 +48,15 @@
 					foreach($datos as $datos){
 						?>
 					<tr>
-						<td><?php echo $datos['id_estudiante']?></td>
+						<td><?php echo $datos['id_Estudiante']?></td>
 						<td><?php echo $datos['nombre']?></td>
 						<td><?php echo $datos['apellido']?></td>
 						<td><?php echo $datos['documento']?></td>
-						<th><?php echo $datos['correo']?></th>
-						<th><?php echo $datos['materia']?></th>
-						<th><?php echo $datos['docente']?></th>
-						<td><?php echo $datos['promedio']?></td>
-						<td><?php echo $datos['fecha_registro']?></td>
-						<td><a href="editar.php?Id=<?php echo $datos['id_estudiante']?>" class="btn btn-danger">ACTUALIZAR</a></td>
-						<td><a href="eliminar.php?Id=<?php echo $datos['id_estudiante']?>" class="btn btn-primary">ELIMINAR</a></td>
+						<td><?php echo $datos['correo']?></td>
+						<td><?php echo $datos['materia']?></td>
+						<td><?php echo $datos['docente']?></td>
+						<td><a class="btn btn-danger" href="editar.php?Id=<?php echo $datos['id_Estudiante']?>">ACTUALIZAR</a></td>
+            <td><a class="btn btn-primary" href="eliminar.php?Id=<?php echo $datos['id_Estudiante']?>">ELIMINAR</a></td>
 					</tr>
 				<?php } ?>
 				</tbody>

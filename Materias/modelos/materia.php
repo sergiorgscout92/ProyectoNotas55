@@ -41,12 +41,13 @@ class Materia extends Conexion
 		return $row;*/
 
 		$row = null;
-		$statement = $this->db->prepare("SELECT * FROM materias WHERE Nombremate = :Nombremate");
-		$statement->execute();
-		while($resul = $statement->fetch()){
-			$row[] = $resul;
-		}
-		return $row;
+			$statement = $this->db->prepare("SELECT * FROM materias");
+			$statement->execute();
+			while ($result = $statement->fetch()) 
+			{
+				$row[] = $result;	
+			}
+			return $row;
 	}
 
 	//funcion para listar por id especifico

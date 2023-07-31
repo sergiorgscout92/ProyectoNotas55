@@ -24,6 +24,16 @@ class Consulta extends Conexion{
 			$row[]=$res;
 		}
 		return $row;
-	}	
+	}
+
+	public function getad(){
+		$row=null;
+		$sta=$this->db->prepare("SELECT * FROM usuarios");
+		$sta->execute();
+		while($res = $sta->fetch()){
+			$row[]=$res;
+		}
+		return $row;
+	}
 }
 ?>

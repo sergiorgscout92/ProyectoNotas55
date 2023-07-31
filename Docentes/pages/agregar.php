@@ -1,3 +1,6 @@
+<?php
+//require_once('../../Usuarios/controladores/validar.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +10,25 @@
   <title>Registro de docentes</title>
 </head>
 <body>
+  <nav nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+      <a class="btn btn-primary" href="../../Administrador/pages/agregar.php">Usuarios</a>
+      <a class="btn btn-primary" href="../../Docentes/pages/agregar.php">Docentes</a>
+      <a class="btn btn-primary" href="../../Estudiantes/pages/agregar.php">Estudiantes</a>
+      <a class="btn btn-primary" href="../../Materias/pages/agregar.php">Materias</a>
+      <a class="btn btn-danger" href="../../Usuarios/controladores/salir.php">Cerrar Sesión</a>
+    </ul>
+  </nav>
+  <h2>BIENVENIDO: <?php echo $_SESSION['usuario'];?></h2>
   <div class="container">
     <div class="col-lg-9">
     <form action="../controladores/agregardocentes.php" method="POST">
       <h1>Registro de docentes</h1>
+      <?php
+        require_once('../../Conexion.php');
+        require_once('../../consultas.php');
+          $consul = new Consulta();
+        ?>
       <div class="form-group">
         <label>Nombre:</label>
         <input type="text" class="form-control" name="txtnombredoc" placeholder="Ingresar su nombre">
@@ -32,9 +50,21 @@
         <br>
       </div>
       <div class="form-group">
-        <label>Materia:</label>
-        <input type="text" class="form-control" name="txtmateriadoc" placeholder="Ingresar materia">
-      </div>
+          <label>Materia:</label>
+          <select name="txtmateriadoc" id="materia">
+            <option>Seleccionar</option>
+            <?php
+              $mate = $consul->getMate();
+              if($mate != null){
+                foreach ($mate as $ma){
+            ?>
+            <option value="<?php echo $ma['Nombremate'] ?>"><?php echo $ma['Nombremate'] ?></option>
+            <?php
+                }
+              }
+            ?>
+          </select>
+        </div>
       <div class="form-group">
         <label>Usuario:</label>
         <input type="text" class="form-control" name="txtusuariodoc" placeholder="Ingresar usuario">
@@ -45,7 +75,7 @@
       </div>
       <div class="form-group">
         <label>Perfil:</label>
-        <select name="txtperfildoc" id="perfildoc">
+        <select name="txtperfildoc" id="perfiles">
           <option value="Administrador">Administrador</option>
           <option value="Docente">Docente</option>
         </select>

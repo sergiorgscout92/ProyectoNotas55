@@ -1,3 +1,6 @@
+<?php
+//require_once('../../Usuarios/controladores/validar.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +10,16 @@
 	<title>Registro Estudiantes</title>
 </head>
 <body>
+	<nav nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+      <a class="btn btn-primary" href="../../Administrador/pages/agregar.php">Usuarios</a>
+      <a class="btn btn-primary" href="../../Docentes/pages/agregar.php">Docentes</a>
+      <a class="btn btn-primary" href="../../Estudiantes/pages/agregar.php">Estudiantes</a>
+      <a class="btn btn-primary" href="../../Materias/pages/agregar.php">Materias</a>
+      <a class="btn btn-danger" href="../../Usuarios/controladores/salir.php">Cerrar Sesión</a>
+    </ul>
+  </nav>
+  <h2>BIENVENIDO: <?php echo $_SESSION['usuario'];?></h2>
 	<div class="container">
 		<div class="col-lg-9">
 			<form action="../controladores/agregarestudiantes.php" method="POST">
@@ -34,7 +47,7 @@
 				</div>
 				<div class="form-group">
 					<label>Materia:</label>
-					<select name="txtmateria" id="materia">
+					<select name="materia" id="materia">
 						<option>Seleccionar</option>
 						<?php
 							$mate = $consul->getMate();
@@ -50,27 +63,19 @@
 				</div>
 				<div class="form-group">
 					<label>Docente:</label>
-					<select name="txtdocente" id="docente">
+					<select name="docente" id="docente">
 						<option>Seleccionar</option>
 						<?php
 							$doce = $consul->getDoc();
 							if($doce != null){
 								foreach($doce as $do){
 						?>
-						<option value="<?php echo $do['Nombredoc'] ?>"><?php echo $do['Nombredoc'] ?></option>
+						<option value="<?php echo $do['Nombredoc']?>"><?php echo $do['Nombredoc']?></option>
 						<?php
 								}
 							}
 						?>						
 					</select>
-				</div>
-				<div class="form-group">
-					<label>Promedio:</label>
-					<input type="text" class="form-control" name="txtpromedio" placeholder="Ingresar promedio de estudiante">
-				</div>
-				<div class="form-group">
-					<label>Fecha de registro:</label>
-					<input type="date" class="form-control" name="txtfechare">
 				</div>
 				<div class="form-group">
         			<button class="btn btn-primary" type="submit" value="Registar">Registrar</button>
